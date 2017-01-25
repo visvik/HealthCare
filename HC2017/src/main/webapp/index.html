@@ -1,0 +1,106 @@
+<html>
+  <head>
+    <title>Health Care</title>
+  </head>
+  <script type="text/javascript" src="jquery-1.12.3.min.js"></script>
+  <body bgcolor=white>
+
+<!--     <table border="0" cellpadding="10"> -->
+<!--       <tr> -->
+<!--         <td> -->
+<!--           <img src="images/springsource.png"> -->
+<!--         </td> -->
+<!--         <td> -->
+<!--           <h1>Health Care Application</h1> -->
+<!--         </td> -->
+<!--       </tr> -->
+<!--     </table> -->
+
+<!--     <p>This is the home page for the Health Care Web application. </p> -->
+<!--     <ul> -->
+<!--       <li>To a <a href="Login.html">Login</a>. -->
+<!--       <li>To a <a href="Login.html">Logout</a>. -->
+<!--     </ul> -->
+
+	<div id="bContainer">
+		<button id="ajax" onClick="saveAsha()">Save Asha</button>
+	
+		<label id="queryLabel">Query String:</label>
+		<textarea id="query" name="query" rows="2" cols="40"></textarea>
+	</div>
+	<div id="anContainer">
+		<button id="ajax" onClick="saveAnganwadi()">Save Anganwadi</button>
+	
+		<label id="queryLabel">Query String:</label>
+		<textarea id="anquery" name="anquery" rows="2" cols="40"></textarea>
+	</div>
+	<div id="ppContainer">
+		<button id="ajax" onClick="saveParent()">Save Anganwadi</button>
+	
+		<label id="queryLabel">Query String:</label>
+		<textarea id="ppquery" name="ppquery" rows="2" cols="40"></textarea>
+	</div>
+  </body>
+  <script type="text/javascript">
+
+	  function saveAsha(){ 
+	      alert('ajax');
+	      var q1 = query.value;
+	      
+	      //var queryString = "{\"PatientName\":{\""+nameType+"\":\""+name+"\"},\"Age\":{\""+ageType+"\":{\"gte\":\""+greaterThan+"\",\"lte\":\""+lesserThan+"\"}},\"StudyDescription\":{\""+desType+"\":\""+des+"\"},\"Modality\":{\""+modType+"\":\""+mod+"\"}}";
+			alert(q1);
+			var url = "http://localhost:8080/HC2017/addAsha";
+			$.ajax({ 
+			     	 url: url,
+		             type: "POST",
+			     	 contentType: 'application/json', 
+			     	 data: q1,
+		    	     dataType: "json",
+		             success: function(data){        
+		    	        alert(data);
+						//drawDataTable(data);
+		    		}
+		    });
+		}	
+	  
+	  function saveAnganwadi(){ 
+	      alert('ajax anganwadi');
+	      var q2 = anquery.value;
+	      
+	      //var queryString = "{\"PatientName\":{\""+nameType+"\":\""+name+"\"},\"Age\":{\""+ageType+"\":{\"gte\":\""+greaterThan+"\",\"lte\":\""+lesserThan+"\"}},\"StudyDescription\":{\""+desType+"\":\""+des+"\"},\"Modality\":{\""+modType+"\":\""+mod+"\"}}";
+			alert(q2);
+			var url = "http://localhost:8080/HC2017/addAnganwadi";
+			$.ajax({ 
+			     	 url: url,
+		             type: "POST",
+			     	 contentType: 'application/json', 
+			     	 data: q2,
+		    	     dataType: "json",
+		             success: function(data){        
+		    	        alert(data);
+						//drawDataTable(data);
+		    		}
+		    });
+		}	
+	  
+	  function saveParent(){ 
+	      alert('ajax parent');
+	      var q3 = ppquery.value;
+	      
+	      //var queryString = "{\"PatientName\":{\""+nameType+"\":\""+name+"\"},\"Age\":{\""+ageType+"\":{\"gte\":\""+greaterThan+"\",\"lte\":\""+lesserThan+"\"}},\"StudyDescription\":{\""+desType+"\":\""+des+"\"},\"Modality\":{\""+modType+"\":\""+mod+"\"}}";
+			alert(q3);
+			var url = "http://localhost:8080/HC2017/addParentProfile";
+			$.ajax({ 
+			     	 url: url,
+		             type: "POST",
+			     	 contentType: 'application/json', 
+			     	 data: q3,
+		    	     dataType: "json",
+		             success: function(data){        
+		    	        alert(data);
+						//drawDataTable(data);
+		    		}
+		    });
+		}	
+  </script>
+</html>
